@@ -37,6 +37,7 @@
                             "forbidden_filename_characters",
                             "forbidden_filename_extensions",
                             "chunked_upload",
+                            "resumable_upload",
                             "directEditing"
                         ],
                         "properties": {
@@ -91,6 +92,21 @@
                                     "max_parallel_count": {
                                         "type": "integer",
                                         "format": "int64"
+                                    }
+                                }
+                            },
+                            "resumable_upload": {
+                                "type": "object",
+                                "required": [
+                                    "supported",
+                                    "interop_version"
+                                ],
+                                "properties": {
+                                    "supported": {
+                                        "type": "boolean"
+                                    },
+                                    "interop_version": {
+                                        "type": "string"
                                     }
                                 }
                             },
