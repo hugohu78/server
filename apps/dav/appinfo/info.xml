@@ -45,6 +45,7 @@
 			<step>OCA\DAV\Migration\RemoveClassifiedEventActivity</step>
 			<step>OCA\DAV\Migration\RemoveDeletedUsersCalendarSubscriptions</step>
 			<step>OCA\DAV\Migration\RemoveObjectProperties</step>
+			<step>OCA\DAV\Migration\RemoveBrokenProperties</step>
 		</post-migration>
 		<live-migration>
 			<step>OCA\DAV\Migration\ChunkCleanup</step>
