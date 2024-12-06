@@ -11,7 +11,7 @@ use OCP\IDBConnection;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
 
-class RemoveBrokenProperties implements IRepairStep {	
+class RemoveBrokenProperties implements IRepairStep {
 	/**
 	 * RemoveBrokenProperties constructor.
 	 *
