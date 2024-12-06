@@ -4,16 +4,14 @@
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-namespace OCA\DAV\Migration;
+namespace OC\Repair;
 
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 use OCP\Migration\IOutput;
 use OCP\Migration\IRepairStep;
 
-class RemoveBrokenProperties implements IRepairStep {
-	private const CALENDAR_TRANSP_PROPERTY = '{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp';
-	
+class RemoveBrokenProperties implements IRepairStep {	
 	/**
 	 * RemoveBrokenProperties constructor.
 	 *
@@ -39,7 +37,7 @@ class RemoveBrokenProperties implements IRepairStep {
 		$cmd = $this->db->getQueryBuilder();
 		$cmd->select('id', 'propertyvalue')
 			->from('properties')
-			->where($cmd->expr()->eq('propertyname', $cmd->createNamedParameter(self::CALENDAR_TRANSP_PROPERTY, IQueryBuilder::PARAM_STR), IQueryBuilder::PARAM_STR));
+			->where($cmd->expr()->eq('valuetype', $cmd->createNamedParameter('3', IQueryBuilder::PARAM_INT), IQueryBuilder::PARAM_INT));
 		$result = $cmd->executeQuery();
 		// find broken properties
 		$brokenIds = [];
