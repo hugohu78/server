@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -34,7 +35,7 @@ class RemoveBrokenProperties implements IRepairStep {
 	 * @inheritdoc
 	 */
 	public function run(IOutput $output) {
-		// select all calendar transparency properties 
+		// select all calendar transparency properties
 		$cmd = $this->db->getQueryBuilder();
 		$cmd->select('id', 'propertyvalue')
 			->from('properties')
