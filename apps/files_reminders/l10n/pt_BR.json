@@ -4,7 +4,7 @@
     "View file" : "Ver arquivo",
     "View folder" : "Ver pasta",
     "Set file reminders" : "Define lembrete em arquivo",
-    "**📣 File reminders**\n\nSet file reminders." : "**📣 Lembrete em Arquivo**\n\nDefine lembrete em arquivo.",
+    "**📣 File reminders**\n\nSet file reminders.\n\nNote: to use the `File reminders` app, ensure that the `Notifications` app is installed and enabled. The `Notifications` app provides the necessary APIs for the `File reminders` app to work correctly." : "**📣 Lembretes de arquivo** \n\nDefina lembretes de arquivo. \n\nObservação: para usar o aplicativo `Lembretes de arquivo`, certifique-se de que o aplicativo `Notificações` esteja instalado e habilitado. O aplicativo `Notificações` fornece as APIs necessárias para que o aplicativo `Lembretes de arquivo` funcione corretamente.",
     "We will remind you of this file" : "Vamos lembrá-lo deste arquivo",
     "Please choose a valid date & time" : "Por favor escolha uma data e hora válida.",
     "Cancel" : "Cancelar",
@@ -25,6 +25,7 @@
     "This weekend" : "Este fim de semana",
     "Set reminder for this weekend" : "Definir lembrete para este fim de semana",
     "Next week" : "Próxima semana",
-    "Set reminder for next week" : "Definir lembrete para a próxima semana"
+    "Set reminder for next week" : "Definir lembrete para a próxima semana",
+    "**📣 File reminders**\n\nSet file reminders." : "**📣 Lembrete em Arquivo**\n\nDefine lembrete em arquivo."
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

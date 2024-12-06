@@ -432,6 +432,17 @@ $CONFIG = [
 'auth.bruteforce.protection.testing' => false,
 
 /**
+ * Brute force protection: maximum number of attempts before blocking
+ *
+ * When more than max-attempts login requests are sent to Nextcloud, requests
+ * will abort with "429 Too Many Requests".
+ * For security reasons, change it only if you know what you are doing.
+ *
+ * Defaults to ``10``
+ */
+'auth.bruteforce.max-attempts' => 10,
+
+/**
  * Whether the rate limit protection shipped with Nextcloud should be enabled or not.
  *
  * Disabling this is discouraged for security reasons.
@@ -2132,9 +2143,9 @@ $CONFIG = [
  * client may not function as expected, and could lead to permanent data loss for
  * clients or other unexpected results.
  *
- * Defaults to ``2.3.0``
+ * Defaults to ``2.7.0``
  */
-'minimum.supported.desktop.version' => '2.3.0',
+'minimum.supported.desktop.version' => '2.7.0',
 
 /**
  * The maximum Nextcloud desktop client version that will be allowed to sync with

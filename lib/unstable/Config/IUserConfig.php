@@ -28,12 +28,15 @@ use NCU\Config\Exceptions\UnknownKeyException;
  * during specific requests or actions to avoid loading the lazy values all the time.
  *
  * @experimental 31.0.0
- * @since 31.0.0
  */
 interface IUserConfig {
-	/** @since 31.0.0 */
+	/**
+	 * @experimental 31.0.0
+	 */
 	public const FLAG_SENSITIVE = 1;   // value is sensitive
-	/** @since 31.0.0 */
+	/**
+	 * @experimental 31.0.0
+	 */
 	public const FLAG_INDEXED = 2;    // value should be indexed
 
 	/**
@@ -45,7 +48,8 @@ interface IUserConfig {
 	 * @param string $appId optional id of app
 	 *
 	 * @return list<string> list of userIds
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getUserIds(string $appId = ''): array;
 
@@ -58,7 +62,8 @@ interface IUserConfig {
 	 * @param string $userId id of the user
 	 *
 	 * @return list<string> list of app ids
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getApps(string $userId): array;
 
@@ -72,7 +77,8 @@ interface IUserConfig {
 	 * @param string $app id of the app
 	 *
 	 * @return list<string> list of stored config keys
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getKeys(string $userId, string $app): array;
 
@@ -85,7 +91,8 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return bool TRUE if key exists
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function hasKey(string $userId, string $app, string $key, ?bool $lazy = false): bool;
 
@@ -99,7 +106,8 @@ interface IUserConfig {
 	 *
 	 * @return bool TRUE if value is sensitive
 	 * @throws UnknownKeyException if config key is not known
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function isSensitive(string $userId, string $app, string $key, ?bool $lazy = false): bool;
 
@@ -118,7 +126,8 @@ interface IUserConfig {
 	 *
 	 * @return bool TRUE if value is sensitive
 	 * @throws UnknownKeyException if config key is not known
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function isIndexed(string $userId, string $app, string $key, ?bool $lazy = false): bool;
 
@@ -134,7 +143,8 @@ interface IUserConfig {
 	 * @return bool TRUE if config is lazy loaded
 	 * @throws UnknownKeyException if config key is not known
 	 * @see IUserConfig for details about lazy loading
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function isLazy(string $userId, string $app, string $key): bool;
 
@@ -150,7 +160,8 @@ interface IUserConfig {
 	 * @param bool $filtered filter sensitive config values
 	 *
 	 * @return array<string, string|int|float|bool|array> [key => value]
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getValues(string $userId, string $app, string $prefix = '', bool $filtered = false): array;
 
@@ -164,7 +175,8 @@ interface IUserConfig {
 	 * @param bool $filtered filter sensitive config values
 	 *
 	 * @return array<string, string|int|float|bool|array> [key => value]
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getAllValues(string $userId, bool $filtered = false): array;
 
@@ -178,7 +190,8 @@ interface IUserConfig {
 	 * @param ValueType|null $typedAs enforce type for the returned values
 	 *
 	 * @return array<string, string|int|float|bool|array> [appId => value]
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getValuesByApps(string $userId, string $key, bool $lazy = false, ?ValueType $typedAs = null): array;
 
@@ -194,7 +207,8 @@ interface IUserConfig {
 	 * @param array|null $userIds limit the search to a list of user ids
 	 *
 	 * @return array<string, string|int|float|bool|array> [userId => value]
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getValuesByUsers(string $app, string $key, ?ValueType $typedAs = null, ?array $userIds = null): array;
 
@@ -210,7 +224,8 @@ interface IUserConfig {
 	 * @param bool $caseInsensitive non-case-sensitive search, only works if $value is a string
 	 *
 	 * @return Generator<string>
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function searchUsersByValueString(string $app, string $key, string $value, bool $caseInsensitive = false): Generator;
 
@@ -225,7 +240,8 @@ interface IUserConfig {
 	 * @param int $value config value
 	 *
 	 * @return Generator<string>
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function searchUsersByValueInt(string $app, string $key, int $value): Generator;
 
@@ -240,7 +256,8 @@ interface IUserConfig {
 	 * @param array $values list of possible config values
 	 *
 	 * @return Generator<string>
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function searchUsersByValues(string $app, string $key, array $values): Generator;
 
@@ -255,7 +272,8 @@ interface IUserConfig {
 	 * @param bool $value config value
 	 *
 	 * @return Generator<string>
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function searchUsersByValueBool(string $app, string $key, bool $value): Generator;
 
@@ -271,7 +289,9 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return string stored config value or $default if not set in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see getValueInt()
 	 * @see getValueFloat()
@@ -292,7 +312,9 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return int stored config value or $default if not set in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see getValueString()
 	 * @see getValueFloat()
@@ -313,7 +335,9 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return float stored config value or $default if not set in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see getValueString()
 	 * @see getValueInt()
@@ -334,7 +358,9 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return bool stored config value or $default if not set in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserPrefences for explanation about lazy loading
 	 * @see getValueString()
 	 * @see getValueInt()
@@ -355,7 +381,9 @@ interface IUserConfig {
 	 * @param bool $lazy search within lazy loaded config
 	 *
 	 * @return array stored config value or $default if not set in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see getValueString()
 	 * @see getValueInt()
@@ -378,7 +406,8 @@ interface IUserConfig {
 	 * @return ValueType type of the value
 	 * @throws UnknownKeyException if config key is not known
 	 * @throws IncorrectTypeException if config value type is not known
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getValueType(string $userId, string $app, string $key, ?bool $lazy = null): ValueType;
 
@@ -396,7 +425,8 @@ interface IUserConfig {
 	 * @return int a bitflag in relation to the config value
 	 * @throws UnknownKeyException if config key is not known
 	 * @throws IncorrectTypeException if config value type is not known
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getValueFlags(string $userId, string $app, string $key, bool $lazy = false): int;
 
@@ -416,7 +446,9 @@ interface IUserConfig {
 	 * @param bool $lazy set config as lazy loaded
 	 *
 	 * @return bool TRUE if value was different, therefor updated in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see setValueInt()
 	 * @see setValueFloat()
@@ -446,7 +478,9 @@ interface IUserConfig {
 	 * @param bool $lazy set config as lazy loaded
 	 *
 	 * @return bool TRUE if value was different, therefor updated in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see setValueString()
 	 * @see setValueFloat()
@@ -471,7 +505,9 @@ interface IUserConfig {
 	 * @param bool $lazy set config as lazy loaded
 	 *
 	 * @return bool TRUE if value was different, therefor updated in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see setValueString()
 	 * @see setValueInt()
@@ -495,7 +531,9 @@ interface IUserConfig {
 	 * @param bool $lazy set config as lazy loaded
 	 *
 	 * @return bool TRUE if value was different, therefor updated in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see setValueString()
 	 * @see setValueInt()
@@ -520,7 +558,9 @@ interface IUserConfig {
 	 * @param bool $lazy set config as lazy loaded
 	 *
 	 * @return bool TRUE if value was different, therefor updated in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
+	 *
 	 * @see IUserConfig for explanation about lazy loading
 	 * @see setValueString()
 	 * @see setValueInt()
@@ -540,7 +580,8 @@ interface IUserConfig {
 	 * @param bool $sensitive TRUE to set as sensitive, FALSE to unset
 	 *
 	 * @return bool TRUE if database update were necessary
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function updateSensitive(string $userId, string $app, string $key, bool $sensitive): bool;
 
@@ -553,7 +594,7 @@ interface IUserConfig {
 	 * @param string $key config key
 	 * @param bool $sensitive TRUE to set as sensitive, FALSE to unset
 	 *
-	 * @since 31.0.0
+	 * @experimental 31.0.0
 	 */
 	public function updateGlobalSensitive(string $app, string $key, bool $sensitive): void;
 
@@ -569,7 +610,8 @@ interface IUserConfig {
 	 * @param bool $indexed TRUE to set as indexed, FALSE to unset
 	 *
 	 * @return bool TRUE if database update were necessary
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function updateIndexed(string $userId, string $app, string $key, bool $indexed): bool;
 
@@ -581,7 +623,8 @@ interface IUserConfig {
 	 * @param string $app id of the app
 	 * @param string $key config key
 	 * @param bool $indexed TRUE to set as indexed, FALSE to unset
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function updateGlobalIndexed(string $app, string $key, bool $indexed): void;
 
@@ -594,7 +637,8 @@ interface IUserConfig {
 	 * @param bool $lazy TRUE to set as lazy loaded, FALSE to unset
 	 *
 	 * @return bool TRUE if database update was necessary
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function updateLazy(string $userId, string $app, string $key, bool $lazy): bool;
 
@@ -606,7 +650,8 @@ interface IUserConfig {
 	 * @param string $app id of the app
 	 * @param string $key config key
 	 * @param bool $lazy TRUE to set as lazy loaded, FALSE to unset
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function updateGlobalLazy(string $app, string $key, bool $lazy): void;
 
@@ -631,7 +676,8 @@ interface IUserConfig {
 	 *
 	 * @return array
 	 * @throws UnknownKeyException if config key is not known in database
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function getDetails(string $userId, string $app, string $key): array;
 
@@ -642,7 +688,7 @@ interface IUserConfig {
 	 * @param string $app id of the app
 	 * @param string $key config key
 	 *
-	 * @since 31.0.0
+	 * @experimental 31.0.0
 	 */
 	public function deleteUserConfig(string $userId, string $app, string $key): void;
 
@@ -652,7 +698,7 @@ interface IUserConfig {
 	 * @param string $app id of the app
 	 * @param string $key config key
 	 *
-	 * @since 31.0.0
+	 * @experimental 31.0.0
 	 */
 	public function deleteKey(string $app, string $key): void;
 
@@ -660,7 +706,8 @@ interface IUserConfig {
 	 * delete all config keys linked to an app
 	 *
 	 * @param string $app id of the app
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function deleteApp(string $app): void;
 
@@ -668,7 +715,8 @@ interface IUserConfig {
 	 * delete all config keys linked to a user
 	 *
 	 * @param string $userId id of the user
-	 * @since 31.0.0
+	 *
+	 * @experimental 31.0.0
 	 */
 	public function deleteAllUserConfig(string $userId): void;
 
@@ -680,7 +728,7 @@ interface IUserConfig {
 	 * @param string $userId id of the user
 	 * @param bool $reload set to TRUE to refill cache instantly after clearing it
 	 *
-	 * @since 31.0.0
+	 * @experimental 31.0.0
 	 */
 	public function clearCache(string $userId, bool $reload = false): void;
 
@@ -688,7 +736,7 @@ interface IUserConfig {
 	 * Clear the cache for all users.
 	 * The cache will be rebuilt only the next time a user config is requested.
 	 *
-	 * @since 31.0.0
+	 * @experimental 31.0.0
 	 */
 	public function clearCacheAll(): void;
 }
