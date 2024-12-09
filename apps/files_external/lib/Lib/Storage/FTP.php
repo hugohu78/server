@@ -105,10 +105,10 @@ class FTP extends Common {
 					return time();
 				}
 				$currentDir = current(array_filter($list, function ($item) {
-					return $item['type'] === 'cdir';
+					return $item['Type'] === 'cdir';
 				}));
 				if ($currentDir) {
-					[$modify] = explode('.', $currentDir['modify'] ?? '', 2);
+					[$modify] = explode('.', $currentDir['Modify'] ?? '', 2);
 					$time = \DateTime::createFromFormat('YmdHis', $modify);
 					if ($time === false) {
 						throw new \Exception("Invalid date format for directory: $currentDir");
@@ -326,11 +326,11 @@ class FTP extends Common {
 
 		foreach ($files as $file) {
 			$name = $file['name'];
-			if ($file['type'] === 'cdir' || $file['type'] === 'pdir') {
+			if ($file['Type'] === 'cdir' || $file['Type'] === 'pdir') {
 				continue;
 			}
 			$permissions = Constants::PERMISSION_ALL - Constants::PERMISSION_CREATE;
-			$isDir = $file['type'] === 'dir';
+			$isDir = $file['Type'] === 'dir';
 			if ($isDir) {
 				$permissions += Constants::PERMISSION_CREATE;
 			}
@@ -339,7 +339,7 @@ class FTP extends Common {
 			$data['mimetype'] = $isDir ? FileInfo::MIMETYPE_FOLDER : $mimeTypeDetector->detectPath($name);
 
 			// strip fractional seconds
-			[$modify] = explode('.', $file['modify'], 2);
+			[$modify] = explode('.', $file['Modify'], 2);
 			$mtime = \DateTime::createFromFormat('YmdGis', $modify);
 			$data['mtime'] = $mtime === false ? time() : $mtime->getTimestamp();
 			if ($isDir) {
